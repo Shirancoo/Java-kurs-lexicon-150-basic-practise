@@ -1,0 +1,118 @@
+/* Återställ grundläggande marginaler och paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Grundinställningar för body */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 20px;
+  }
+  
+  /* Styling för select-menyn */
+  select {
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Rubriker */
+  h1, h2, h3, h4, h5, h6 {
+    margin: 10px 0;
+    font-weight: 600;
+  }
+  
+  h1 {
+    font-size: 2em;
+    color: #222;
+  }
+  
+  h2 {
+    font-size: 1.8em;
+  }
+  
+  h3 {
+    font-size: 1.6em;
+  }
+  
+  h4 {
+    font-size: 1.4em;
+  }
+  
+  h5 {
+    font-size: 1.2em;
+  }
+  
+  h6 {
+    font-size: 1em;
+  }
+  
+  /* Styling för stycken */
+  p {
+    margin: 15px 0;
+  }
+  
+  /* Listor */
+  ol, ul {
+    margin: 15px 0;
+    padding-left: 40px;
+  }
+  
+  /* Länkar */
+  a {
+    color: #0077cc;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Bilder */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+  }
+  
+  /* Tabeller */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  table thead th {
+    background-color: #0077cc;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  table tbody td {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Sektioner, artiklar och sidofält */
+  section, article, aside {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Extra styling för aside */
+  aside {
+    background-color: #e9f5ff;
+  }
+  
