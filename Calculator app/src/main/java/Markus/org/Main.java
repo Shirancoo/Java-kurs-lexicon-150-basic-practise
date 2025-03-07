@@ -8,9 +8,11 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
+   
 
         while (true) {
-            System.out.println("Choose an operation: +, -, *, / or type 'exit' to quit the program.");
+
+            System.out.println("Choose an operation: +, -, *, / or type 'exit' to quit the program. \nIf you want to separate decimal numbers. Use a comma (,)");
             String whatMath = input.next();
 
             if (whatMath.equals("exit")) {
@@ -52,7 +54,7 @@ public class Main {
                 System.out.println("Write a Number second You want to add ");
                 double b = input.nextDouble();
                 if (b == 0) {
-                    System.out.println("Cannot divide by zero. Continuing...");
+                    System.out.println("Cannot divide by zero..");
                 }
                 if (a == 0) {
                     System.out.println("Cannot divide by zero. Please Chose one of the operations below");
