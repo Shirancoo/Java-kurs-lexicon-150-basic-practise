@@ -19,8 +19,6 @@ public class Main {
             num1 = input.nextDouble();
             System.out.println("Enter an operator (+, -, *, / ):");
             operator = input.next().charAt(0);
-
-
             System.out.println("Enter the second number");
             num2 = input.nextDouble();
 
