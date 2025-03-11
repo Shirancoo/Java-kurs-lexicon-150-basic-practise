@@ -80,12 +80,14 @@ public class Main {
         String charArray = "ThisShouldBeConverted";
         char [] chars = charArray.toCharArray();
         System.out.println(Arrays.toString(chars));
+        System.out.println(chars);
 
         // Convert the following char[]: {'J','a','v','a'} to a
         //String and print it out.
 
         char[] java = {'J','a','v','a'};
         System.out.println(Arrays.toString(java));
+        System.out.println(java);
 
 
 
