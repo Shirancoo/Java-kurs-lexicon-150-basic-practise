@@ -1,67 +1,61 @@
 package Markus.org;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class CurrencyConverterStart {
 
+    private static Scanner input;
+
     public static void start() {
         Scanner input = new Scanner(System.in);
-        CurrencyExanger usdexanger = new CurrencyExanger();
 
         boolean isRunning = true;
 
         while (isRunning) {
+            currencyExchanger.menuPrint();
 
-            System.out.println("-------------------------------------");
-            System.out.println("Welcome to my Currency Converter App ");
-            System.out.println("-------------------------------------");
-            System.out.println("Please make a choice 0-4 of what you want to exchange or exit program");
-            System.out.println("1. Convert SEK to USD");
-            System.out.println("2. Convert USD to SEK");
-            System.out.println("3. Convert SEK to Euro");
-            System.out.println("4. Convert Euro to SEK");
-            System.out.println("0. Close Program");
-            System.out.println("---------------------------------------------------------------------");
-            System.out.print("Enter Your Choice: ");
             String choice = input.next();
-
-
             switch (choice) {
-                case "1":
 
-                    System.out.print("Enter the amount of SEK you want to convert to USD ");
-                    double sekToUs = CurrencyExanger.sekToUsd(input.nextDouble());
-                    System.out.println("Amount: " + CurrencyExanger.sekToUsd(sekToUs) + "$");
+                case "1":
+                    System.out.println(LocalDate.now() + " SEK to dollars Currency rate: " + currencyExchanger.SekRate);
+                    System.out.print("Enter the amount of SEK to USD: ");
+                    System.out.println(" Current currency rate: " + currencyExchanger.SekRate);
+                    double sekToUs = currencyExchanger.sekToUsd(input.nextDouble());
+                    System.out.println(LocalDate.now() + " Amount: " + sekToUs + currencyExchanger.getDollarSymbol);
 
                     break;
 
                 case "2":
-                    System.out.print("Enter the amount of USD you want to convert to SEK ");
-                    double usdToSe = CurrencyExanger.usdToSek(input.nextDouble());
-                    System.out.println("Amount: " + CurrencyExanger.usdToSek(usdToSe) + "Kr");
+                    System.out.println(LocalDate.now() + " Dollars to SEK Currency rate: " + currencyExchanger.usdRate);
+                    System.out.print("Enter the amount of USD to SEK: ");
+                    double usdToSe = currencyExchanger.usdToSek(input.nextDouble());
+                    System.out.println(LocalDate.now() + " Amount: " + usdToSe + currencyExchanger.getSekSymbol);
 
                     break;
                 case "3":
-                    System.out.print("Enter the amount of SEK you want to convert to EURO ");
-                    double sekToEu = CurrencyExanger.sekToEuro(input.nextDouble());
-                    System.out.println("Amount: " + CurrencyExanger.sekToEuro(sekToEu) + "£");
+                    System.out.println(LocalDate.now() + " SEK to Euro Currency rate: " + currencyExchanger.euroRate);
+                    System.out.print("Enter the amount of SEK to EURO: ");
+                    double sekToEu = currencyExchanger.sekToEuro(input.nextDouble());
+                    System.out.println(LocalDate.now() + " Amount: " + sekToEu + currencyExchanger.getEuroSymbol);
                     break;
                 case "4":
-                    System.out.print("Enter the amount of Euro you want to convert to SEK ");
-                    double euroToSe = CurrencyExanger.euroToSek(input.nextDouble());
-                    System.out.println("Amount: " + CurrencyExanger.euroToSek(euroToSe) + "Kr");
+                    System.out.println(LocalDate.now() + " | Euro to SEK Currency rate: " + currencyExchanger.SekERate);
+                    System.out.print("Enter the amount of EURO to SEK: ");
+                    double euroToSe = currencyExchanger.euroToSek(input.nextDouble());
+                    System.out.println(LocalDate.now() + " Amount: " + euroToSe + currencyExchanger.getSekSymbol);
                     break;
                 case "0":
                     isRunning = false;
-                    System.out.println("Closing Program");
+                    System.out.println("Closing Program...");
                     break;
                 default:
-                    System.out.println("Please Insert a number between 0-4 to make a choose if you want to exit press 0");
-
+                    System.out.println("Please insert a number between 0-4 or enter 0 to exit.");
             }
-
-
         }
         input.close();
+
+
     }
 }
