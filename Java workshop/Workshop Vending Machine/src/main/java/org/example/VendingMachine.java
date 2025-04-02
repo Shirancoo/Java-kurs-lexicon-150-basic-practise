@@ -2,12 +2,11 @@ package org.example;
 
 public interface VendingMachine {
 
-    void addCurrency (double amount);
     void addCurrency (int amount);
     int  getBalance ();
     Product request(int id);
     int endSession();
-    String getDescription(int id);
+    String[] getDescription(int id);
     String [] getProducts();
 
 }
