@@ -8,7 +8,7 @@ public class Main {
         Choklad snickers = new Choklad(2,15,"Snickers");
         Chips grillChips = new Chips(1,28,"OLW GrillChips");
         Product [] arrays  = {snickers,grillChips};
-        VendingMachineImpl vending = new VendingMachineImpl(arrays);
+        VendingMachineImpl vendingMachine1 = new VendingMachineImpl(arrays);
 
     }
 }

@@ -3,8 +3,8 @@ package org.example;
 import java.util.Arrays;
 
 public class VendingMachineImpl implements VendingMachine {
-    Product[] products;
-    int depositPool;
+    private Product[] products;
+    private int depositPool;
 
 
     public VendingMachineImpl(Product[] products) {
