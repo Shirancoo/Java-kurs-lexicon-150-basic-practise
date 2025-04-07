@@ -2,16 +2,14 @@ package Markus.org;
 
 public class Main {
     public static void main(String[] args) {
-        Person kalle = new Person(14,"kalle","agersten","kallemurare@gmail.com");
-        Person markus = new Person(13,"markus","agersten","Markus@gmail.com");
+        Person kalle = new Person("null", "ssss", "Persson@gmail.com");
+        Person markus = new Person("Markus", "Agersten", "");
+        Person marksus = new Person("Markus", "Agersten", "");
 
 
-
-        System.out.println(kalle.getSummay());
-
-        System.out.println(markus.getSummay());
-        markus.seteMail("");
-        System.out.println(markus.getId());
+        System.out.println(kalle.getSummary());
+        System.out.println(markus.getSummary());
+        System.out.println(marksus.getSummary());
 
 
 
