@@ -17,7 +17,7 @@ public class Todoitem {
         if (title == null || title.isEmpty()) {
             throw new IllegalArgumentException("Title cannot be null or empty");
         }
-        return "Title: " + title;
+        return title;
     }
 
     public void setTitle(String title) {
@@ -36,15 +36,16 @@ public class Todoitem {
     }
 
     public LocalDate getDeadLine() {
-        if (LocalDate.now().isBefore(deadLine)) {
-            System.out.println("There is still time before the deadline.");
-        } else {
-            System.out.println("Deadline has passed or is today.");
-        }
+
         return deadLine;
     }
 
     public void setDeadLine(LocalDate deadLine) {
+        if (LocalDate.now().isBefore(deadLine)) {
+            isOverdue();
+        } else {
+            overdue = true;
+        }
         this.deadLine = deadLine;
     }
 
@@ -80,7 +81,10 @@ public class Todoitem {
         this.done = done;
         this.creator = creator;
     }
+
     public String getSummary() {
-        return " ID: " + id + " | Title: " + getTitle() + " | Deadline: " + getDeadLine() + " | Creator: " + getCreator();
+        return getCreator().getFirstName() + " (" + id + ") | TodoTask: " + getTitle() + "\nTask Description: " + getTaskDescription() +
+                " | Deadline: " + getDeadLine() + "\nCreator: " + getCreator().getFirstName() + " | Overdue = " + isOverdue() + " | IsDone = " + isDone();
+
     }
 }

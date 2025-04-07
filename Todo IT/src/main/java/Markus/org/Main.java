@@ -1,15 +1,14 @@
 package Markus.org;
 
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
-        Person kalle = new Person("null", "ssss", "Persson@gmail.com");
-        Person markus = new Person("Markus", "Agersten", "");
-        Person marksus = new Person("Markus", "Agersten", "");
+        Person kalle = new Person("Kalle", "Svensson", "Kalle.svensson@gmail.com");
+        Todoitem running = new Todoitem("Running","run 20 miles", LocalDate.of(2025,5,17),true,kalle);
+        TodoitemTask task = new TodoitemTask(true,running,kalle);
+        System.out.println(task.getSummary());
 
-
-        System.out.println(kalle.getSummary());
-        System.out.println(markus.getSummary());
-        System.out.println(marksus.getSummary());
 
 
 

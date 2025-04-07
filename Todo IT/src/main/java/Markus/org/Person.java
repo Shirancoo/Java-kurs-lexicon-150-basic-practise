@@ -10,25 +10,28 @@ public class Person {
 
     public String getFirstName() {
         if (firstName == null || firstName.isEmpty()) {
-            throw new IllegalArgumentException("Title cannot be null or empty");
+            throw new IllegalArgumentException("firstName cannot be null or empty");
         }
         return firstName;
     }
 
     public void setFirstName(String firstName) {
 
-        this.firstName = firstName;
-    }
+            if (firstName == null || firstName.isEmpty()) {
+                throw new IllegalArgumentException("firstName cannot be null or empty");
+            }
+            this.firstName = firstName;
+        }
 
     public String getLastName() {
         if (lastName == null || lastName.isEmpty()) {
-            throw new IllegalArgumentException("Title cannot be null or empty");
+            throw new IllegalArgumentException("lastName cannot be null or empty");
         }
         return lastName;
     }
 
-    public String setLastName(String lastName) {
-        return lastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
 
@@ -51,6 +54,7 @@ public class Person {
     }
 
     public String getSummary() {
-        return " ID: " + id + " | Name: " + getFirstName() + " | LastName: " + getLastName() + " | Email: " + geteMail();
+        return "ID: (" + id + ") | Name: " + getFirstName() + " | LastName: " + getLastName() + " | Email: " + geteMail();
+
     }
 }
