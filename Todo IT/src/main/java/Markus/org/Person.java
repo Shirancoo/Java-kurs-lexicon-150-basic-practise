@@ -6,7 +6,15 @@ public class Person {
     private String firstName;
     private String lastName;
     private String eMail;
+    private AppUser credentials;
 
+    public AppUser getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(AppUser credentials) {
+        this.credentials = credentials;
+    }
 
     public String getFirstName() {
         if (firstName == null || firstName.isEmpty()) {
@@ -46,6 +54,7 @@ public class Person {
         this.eMail = eMail;
     }
 
+
     public Person(String firstName, String lastName, String eMail) {
         this.id = IdGenerator.generateId();
         this.firstName = firstName;
@@ -54,7 +63,7 @@ public class Person {
     }
 
     public String getSummary() {
-        return "ID: (" + id + ") | Name: " + getFirstName() + " | LastName: " + getLastName() + " | Email: " + geteMail();
+        return  "ID: (" + id + ") | Name: " + getFirstName() + " | LastName: " + getLastName() + " | Email: " + geteMail();
 
     }
 }
