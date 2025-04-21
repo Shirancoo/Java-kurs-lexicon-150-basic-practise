@@ -2,9 +2,9 @@ package Markus.org;
 
 import Markus.dao.PersonDAO;
 import Markus.dao.TodoItemDAO;
-import Markus.org.dao.impl.PersonDAOImpl;
-import Markus.org.dao.impl.TodoItemDAOImpl;
-import Markus.org.models.AppUser;
+import Markus.impl.PersonDAOImpl;
+import Markus.impl.TodoItemDAOImpl;
+import Markus.models.AppUser;
 
 import java.time.LocalDate;
 import java.util.List;

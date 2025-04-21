@@ -1,6 +1,6 @@
 package Markus.dao;
 
-import Markus.org.models.AppUser;
+import Markus.models.AppUser;
 
 import java.util.List;
 

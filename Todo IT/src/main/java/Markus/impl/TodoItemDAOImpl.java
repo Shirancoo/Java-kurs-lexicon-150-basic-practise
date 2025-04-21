@@ -1,4 +1,4 @@
-package Markus.org.dao.impl;
+package Markus.impl;
 
 import Markus.dao.TodoItemDAO;
 import Markus.org.Person;

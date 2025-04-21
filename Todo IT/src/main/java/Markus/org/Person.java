@@ -1,7 +1,7 @@
 package Markus.org;
 
 
-import Markus.org.models.AppUser;
+import Markus.models.AppUser;
 
 public class Person {
     private final int id;

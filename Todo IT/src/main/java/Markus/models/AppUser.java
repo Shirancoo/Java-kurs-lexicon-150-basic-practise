@@ -1,4 +1,4 @@
-package Markus.org.models;
+package Markus.models;
 
 import Markus.org.AppRole;
 

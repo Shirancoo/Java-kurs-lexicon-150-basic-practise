@@ -1,7 +1,7 @@
-package Markus.org.dao.impl;
+package Markus.impl;
 
 import Markus.dao.AppUserDAO;
-import Markus.org.models.AppUser;
+import Markus.models.AppUser;
 
 import java.util.ArrayList;
 import java.util.List;
