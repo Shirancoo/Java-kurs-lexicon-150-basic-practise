@@ -9,6 +9,9 @@ public class Main {
         System.out.println(account1.getSaldo());
         account1.withdraw(508);
         System.out.println(account1.getSaldo());
+        account1.deposit(500);
+        System.out.println(account1.getSaldo());
+
 
 
 

@@ -3,9 +3,10 @@ package org.example;
 public class Student implements Displayable {
     private int age;
     private String name;
-    private StudyProgram program;
+    private String program;
 
-    public Student(int age, String name, StudyProgram program) {
+
+    public Student(int age, String name, String program) {
         this.age = age;
         this.name = name;
         this.program = program;
@@ -27,20 +28,16 @@ public class Student implements Displayable {
         this.name = name;
     }
 
-    public StudyProgram getProgram() {
+    public String getProgram() {
         return program;
     }
 
-    public void setProgram(StudyProgram program) {
+    public void setProgram(String program) {
         this.program = program;
     }
 
     @Override
-    public void displayinfo()
-    {
-        System.out.println("Name " + name);
-        System.out.println("Age " + age);
-        System.out.println("Program " + program);
-
+    public String toString() {
+        return "Name: " + name + ", Age: " + age + ", Program: " + program;
     }
 }

@@ -73,6 +73,10 @@ public class Todoitem {
         return LocalDate.now().isAfter(deadLine);
     }
 
+    public int getId() {
+        return id;
+    }
+
     public Todoitem(String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
         this.id = IdGenerator.generateId();
         this.title = title;

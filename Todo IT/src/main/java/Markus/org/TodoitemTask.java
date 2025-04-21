@@ -35,6 +35,10 @@ public class TodoitemTask {
         this.assignee = assignee;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public TodoitemTask(boolean assigned, Todoitem todoitem, Person assignee) {
         this.id = IdGenerator.generateId();
         this.assigned = assigned;

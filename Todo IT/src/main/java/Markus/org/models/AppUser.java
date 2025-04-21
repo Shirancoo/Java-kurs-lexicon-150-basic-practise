@@ -1,4 +1,6 @@
-package Markus.org;
+package Markus.org.models;
+
+import Markus.org.AppRole;
 
 public class AppUser {
     private String userName;
@@ -34,7 +36,7 @@ public class AppUser {
     }
 
     public void setRole(AppRole role) {
-        if (role == null) {
+        if (role == null ) {
             throw new IllegalArgumentException("Role cannot be null");
         }
         this.role = role;
@@ -59,7 +61,9 @@ public class AppUser {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "AppUser{" +
+                "userName='" + userName + '\'' +
+                ", role=" + role +
+                '}';
     }
-
 }
