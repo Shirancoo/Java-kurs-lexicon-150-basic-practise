@@ -31,16 +31,16 @@ public class Main {
         personDAO.persist(kalle);
 
         // Skapa Todoitems
-        Todoitem springa = new Todoitem("Springa", "Spring 5 km", LocalDate.of(2025, 5, 17), false, kalle);
+        Todoitem springa = new Todoitem("Springa", "Spring 5 km", LocalDate.of(2024, 5, 17), false, kalle);
         Todoitem plugga = new Todoitem("Plugga", "Plugga Java", LocalDate.of(2025, 5, 20), false, kalle);
-        Todoitem koda = new Todoitem("Koda", "Gör todo-app", LocalDate.now(), true, markus);
+        Todoitem koda = new Todoitem("Koda", "Gör todoapp", LocalDate.now(), true, markus);
 
         // Lägg till uppgifter
         todoDAO.persist(springa);
         todoDAO.persist(plugga);
         todoDAO.persist(koda);
 
-        // Skapa uppgift för task (beroende mellan personer)
+        // Skapa uppgift för task
         TodoitemTask task = new TodoitemTask(true, springa, markus);
 
         System.out.println("=== Sammanfattning av uppgift ===");
