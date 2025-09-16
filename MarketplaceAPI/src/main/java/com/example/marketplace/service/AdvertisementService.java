@@ -17,21 +17,21 @@ import java.util.stream.Collectors;
 @Service
 public class AdvertisementService {
 
-    private final AdvertisementRepository advertisementRepository;
+    private final AdvertisementRepository advertisementRepo;
     private final UserService userService;
-    private final UserRepository userRepository;
+    private final UserRepository userRepo;
 
-    // Konstruktor-injektion
-    public AdvertisementService(AdvertisementRepository advertisementRepository,
+    // Constructor injection – Spring handles this
+    public AdvertisementService(AdvertisementRepository advertisementRepo,
                                 UserService userService,
-                                UserRepository userRepository) {
-        this.advertisementRepository = advertisementRepository;
+                                UserRepository userRepo) {
+        this.advertisementRepo = advertisementRepo;
         this.userService = userService;
-        this.userRepository = userRepository;
+        this.userRepo = userRepo;
     }
 
-    // Skapar ny annons med login eller auto-registrering
-    public Advertisement createAd(AdvertisementRequest request) {
+    // Skapar en annons – om användaren inte finns så skapas den automatiskt
+    public AdvertisementResponse createAd(AdvertisementRequest request) {
         User user = userService.findByEmail(request.getEmail())
                 .map(u -> userService.validateUser(request.getEmail(), request.getPassword()))
                 .orElseGet(() -> userService.registerUser(request.getEmail(), request.getPassword()));
@@ -43,33 +43,38 @@ public class AdvertisementService {
                 user
         );
 
-        return advertisementRepository.save(ad);
+        System.out.println("Saving ad: " + ad.getTitle());
+        Advertisement savedAd = advertisementRepo.save(ad);
+        AdvertisementResponse NewAd = new AdvertisementResponse(savedAd.getTitle(),savedAd.getDescription(),savedAd.getExpirationDate(),savedAd.getId()) ;
+        return NewAd;
     }
 
-    // Hämtar alla annonser som inte har gått ut
+    // Get all non-expired ads
     public List<AdvertisementResponse> getAllActiveAds() {
-        return advertisementRepository.findByExpirationDateAfter(LocalDate.now())
+        return advertisementRepo.findByExpirationDateAfter(LocalDate.now())
                 .stream()
                 .map(ad -> new AdvertisementResponse(
                         ad.getTitle(),
                         ad.getDescription(),
                         ad.getExpirationDate()
+                        ,ad.getId()
                 ))
                 .collect(Collectors.toList());
     }
 
-    // Hämtar annonser för en viss användare
+    // få alla annonser från inloggade
     public List<AdvertisementResponse> getMyAds(UserLoginRequest request) {
         User user = userService.findByEmail(request.getEmail())
                 .filter(u -> u.getPassword().equals(request.getPassword()))
-                .orElseThrow(() -> new InvalidCredentialsException("Felaktig e-post eller lösenord"));
+                .orElseThrow(() -> new InvalidCredentialsException("Incorrect email or password"));
 
-        return advertisementRepository.findByUser(user)
+        return advertisementRepo.findByUser(user)
                 .stream()
                 .map(ad -> new AdvertisementResponse(
                         ad.getTitle(),
                         ad.getDescription(),
                         ad.getExpirationDate()
+                        ,ad.getId()
                 ))
                 .collect(Collectors.toList());
     }

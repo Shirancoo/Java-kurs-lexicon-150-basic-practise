@@ -8,38 +8,40 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
-// Global hantering av fel som kastas i applikationen
+// Här hanterar vi olika fel
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // Valideringsfel (@NotBlank, @Email, etc.)
+    // Valideringsfel som @NotBlank och sånt
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleValidationErrors(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
+    public ResponseEntity<Map<String, String>> valideringsFel(MethodArgumentNotValidException ex) {
+        Map<String, String> felMap = new HashMap<>();
         ex.getBindingResult().getFieldErrors().forEach(error ->
-                errors.put(error.getField(), error.getDefaultMessage())
+                felMap.put(error.getField(), error.getDefaultMessage())
         );
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(felMap, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<String> handleUserExists(UserAlreadyExistsException ex) {
+    public ResponseEntity<String> hanteraRedanRegistrerad(UserAlreadyExistsException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(InvalidCredentialsException.class)
-    public ResponseEntity<String> handleInvalidCredentials(InvalidCredentialsException ex) {
+    public ResponseEntity<String> hanteraFelLogin(InvalidCredentialsException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(AdvertisementExpiredException.class)
-    public ResponseEntity<String> handleAdExpired(AdvertisementExpiredException ex) {
+    public ResponseEntity<String> hanteraGammalAnnons(AdvertisementExpiredException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.GONE);
     }
 
-    // Fångar alla andra oväntade fel
+    // Om nåt annat helt oväntat händer?
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleGeneralError(Exception ex) {
+    public ResponseEntity<String> hanteraAllmäntFel(Exception ex) {
+        System.out.println("FEL: " + ex); // debug, ta bort i produktion
         return new ResponseEntity<>("Något gick fel: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 }

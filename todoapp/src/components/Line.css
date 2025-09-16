@@ -1,0 +1,11 @@
+.line {
+    padding-top: 20px;
+
+    padding-bottom: 1rem;
+    border-bottom: 1px solid black;
+    width: 70vw;
+    height: 100px;
+    margin-top: 50px;
+    margin-left: 17vw ;
+    margin-right: 20vw;
+}

@@ -1,4 +1,3 @@
-
 package com.example.marketplace.service;
 
 import com.example.marketplace.exception.InvalidCredentialsException;
@@ -9,29 +8,31 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-// Denna klass hanterar logiken kring användare
+// Hanterar användare (typ login, hitta, skapa)
 @Service
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository userRepo; //
 
-    // Metod som hittar användare via e-post
+    // Hitta användare via e-post
     public Optional<User> findByEmail(String email) {
-        return userRepository.findByEmail(email);
+        return userRepo.findByEmail(email);
     }
 
-    // Validerar användare, används vid login
+    // Kollar om e-post + lösenord stämmer
     public User validateUser(String email, String password) {
-        return userRepository.findByEmail(email)
+        return userRepo.findByEmail(email)
                 .filter(user -> user.getPassword().equals(password))
                 .orElseThrow(() -> new InvalidCredentialsException("Felaktig e-post eller lösenord"));
     }
 
-    // Skapar ny användare om e-post inte finns
+    // Skapar en ny användare  om den inte redan finns
     public User registerUser(String email, String password) {
-        User user = new User(email, password);
-        return userRepository.save(user);
-    }
+        System.out.println("Registrerar ny användare: " + email); // debug, ta bort sen kanske
 
+        User user = new User(email, password);
+
+        return userRepo.save(user);
+    }
 }

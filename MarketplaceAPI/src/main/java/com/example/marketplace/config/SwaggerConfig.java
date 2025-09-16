@@ -5,16 +5,15 @@ import io.swagger.v3.oas.models.info.Info;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-// Konfiguration för Swagger-dokumentation
+//inställningar för Swagger så man kan testa API:et
 @Configuration
 public class SwaggerConfig {
 
     @Bean
-    public OpenAPI marketplaceOpenAPI() {
-        return new OpenAPI()
-                .info(new Info()
-                        .title("Marketplace API")
-                        .description("Ett simpelt API för annonser med auto-login och validering")
-                        .version("1.0"));
+    public OpenAPI skapaSwagger() {
+        return new OpenAPI().info(new Info()
+                .title("Marketplace API")
+                .description("Ett API för annonser. Man loggar in automatiskt och det finns lite validering.")
+                .version("1.0"));
     }
 }

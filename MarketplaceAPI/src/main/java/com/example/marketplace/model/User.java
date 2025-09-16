@@ -3,6 +3,7 @@ package com.example.marketplace.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     @Email
     @NotBlank
     @Column(unique = true)
@@ -21,29 +23,38 @@ public class User {
     @NotBlank
     private String password;
 
+    @Setter
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Advertisement> advertisements;
+    private List<Advertisement> minaAnnonser;
 
-    // Konstruktörer
+    // Tom konstruktor krävs av JPA
     public User() {}
 
+    // Används när man skapar användare
     public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    // Getters och Setters
-    public Long getId() { return id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getEmail() { return email; }
+    public String getEmail() {
+        return email;
+    }
 
-    public void setEmail(String email) { this.email = email; }
+    public String getPassword() {
+        return password;
+    }
 
-    public String getPassword() { return password; }
+    public void setPassword(String password) {
+        System.out.println("Sätter nytt lösenord för: " + email); // debug
+        this.password = password;
+    }
 
-    public void setPassword(String password) { this.password = password; }
+    public List<Advertisement> getMinaAnnonser() {
+        return minaAnnonser;
+    }
 
-    public List<Advertisement> getAdvertisements() { return advertisements; }
-
-    public void setAdvertisements(List<Advertisement> advertisements) { this.advertisements = advertisements; }
 }

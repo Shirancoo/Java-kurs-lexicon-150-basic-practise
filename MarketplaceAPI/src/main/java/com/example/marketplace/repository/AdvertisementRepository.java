@@ -7,12 +7,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.time.LocalDate;
 import java.util.List;
 
-// Repository för att hämta annonser
+// Här hämtar vi annonser från databasen (automatiskt med Spring?)
 public interface AdvertisementRepository extends JpaRepository<Advertisement, Long> {
 
-    // Hämta alla annonser som inte har gått ut
+    // Returnerar annonser som inte gått ut ännu
     List<Advertisement> findByExpirationDateAfter(LocalDate date);
 
-    // Hämta alla annonser för en viss användare
+    // Returnerar alla annonser som tillhör en viss användare
     List<Advertisement> findByUser(User user);
+
+    // TODO: kanske lägga till sortering efter datum eller titel
 }
