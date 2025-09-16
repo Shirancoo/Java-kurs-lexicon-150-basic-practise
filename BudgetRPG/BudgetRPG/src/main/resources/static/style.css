@@ -1,0 +1,29 @@
+/* Mörk bas från Bootstrap, minimala overrides */
+body { background-color: #0b1020 !important; }
+.card { border-radius: 16px; }
+
+/* XP ring (cirkeln i din mock) */
+.xp-ring { width: 120px; height: 120px; }
+.xp-ring-fill {
+  width: 120px; height: 120px; border-radius: 50%;
+  background: conic-gradient(#4cc9f0 0deg, #7c5cff 0deg, #0b1020 0deg);
+}
+.xp-ring-center {
+  position: absolute; inset: 12px; border-radius: 50%;
+  background: #0b1020; display: grid; place-items: center;
+}
+
+/* Confetti */
+.confetti { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+.confetti .dot {
+  position: absolute; width: 8px; height: 8px; border-radius: 50%;
+  animation: fall 1200ms ease-out forwards;
+}
+@keyframes fall {
+  0% { transform: translateY(-10px); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(90vh) rotate(160deg); opacity: 0; }
+}
+
+/* Quest item */
+.quest-item { background: #0f1730; border: 1px solid #223158; border-radius: 12px; padding: 10px; }
